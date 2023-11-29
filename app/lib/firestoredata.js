@@ -7,7 +7,6 @@ import {
   onSnapshot,
   query,
 } from "firebase/firestore";
-// import { useEffect } from "react";
 
 const Firestoredata = async () => {
   const q = query(collection(db, "laboratory"));
@@ -18,13 +17,21 @@ const Firestoredata = async () => {
     // console.log(doc.id, "=>", doc.data);
   });
   return (
-    <div>
-      <div>
-        <ul>
+    <div className="my-10">
+      <div className="flex flex-col justify-center items-center">
+        <ul className="list-none">
           {data.map((data, id) => (
-            <li key={id}>
-              <h1>{data.labname}</h1>
-              <h2>{data.kasublab}</h2>
+            <li
+              key={id}
+              className="flex flex-row border items-center justify-between"
+            >
+              <div>
+                <h1 className="text-lg m-2">Lab = {data.labname}</h1>
+                <h2 className="text-base m-2">Kepala = {data.kasublab}</h2>
+              </div>
+              <a className="border p-3 m-2" href={"../lab/" + data.id}>
+                View
+              </a>
             </li>
           ))}
         </ul>
