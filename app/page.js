@@ -1,11 +1,9 @@
-import Image from "next/image";
 import Firestoredata from "./lib/firestoredata";
 
 export default function Home() {
-  
   return (
-    <div>
-      <h1>Welcome To Web Lab</h1>
+    <div className="flex flex-col items-center">
+      <h1 className="my-10 text-3xl font-bold">Welcome to Web Lab</h1>
       <Firestoredata />
     </div>
   );
