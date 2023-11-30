@@ -20,11 +20,19 @@ const Page = async ({ params }) => {
   const snap = await getDoc(ref);
   lab.push(snap.data().labname);
   return (
-    <div>
-      <h1>{lab}</h1>
-
-      <Lab link={slug} />
-      <Borrow link={slug} />
+    <div className="flex flex-col items-center">
+      <div>
+        <h1 className="text-3xl font-semibold">Lab {lab}</h1>
+      </div>
+      <div className="grid grid-cols-2 justify-between">
+        <div>
+          <Lab link={slug} />
+        </div>
+        <div>
+          <Borrow link={slug} />
+        </div>
+      </div>
+      <a href={"../formadd/" + slug}>Pinjam</a>
     </div>
   );
 };
