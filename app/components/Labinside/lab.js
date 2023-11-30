@@ -14,10 +14,10 @@ const labins = async ({ link }) => {
   return (
     <div>
       <h1>Asisten Laboratorium</h1>
-      <ul>
+      <ul className="list-none">
         {data.map((data, id) => (
           <li key={id}>
-            <h1>{data.Name}</h1>
+            <h1>{data.Nama}</h1>
             <h2>{data.email}</h2>
           </li>
         ))}
