@@ -10,20 +10,26 @@ const Borrow = async ({ link }) => {
   const docref = doc(ref, link);
   const qBorrow = query(collection(docref, "borrow"));
   const querySnapshot = await getDocs(qBorrow);
-  querySnapshot.forEach((doc) => {
-    data.push({ ...doc.data(), id: doc.id });
-  });
+  if (querySnapshot.empty) {
+    doing = "Tidak Ada Peminjaman";
+  } else {
+    querySnapshot.forEach((doc) => {
+      data.push({ ...doc.data(), id: doc.id });
+    });
+  }
+
   return (
     <div>
-      <h1>Peminjaman</h1>
-      <ul>
+      <h1 className="text-lg font-semibold">Peminjaman</h1>
+      <ul className="list-none border flex flex-col">
+        {doing}
         {data.map((data, id) => (
-          <li key={id}>
-            <div>
+          <li key={id} className="flex flex-row">
+            <div className="flex flex-row justify-between">
               <p>{data.name}</p>
               <p>{data.kindOf}</p>
             </div>
-            <p>{new Date(data.Date.seconds * 1000).toDateString()}</p>
+            <p>{new Date(data.Dates.seconds * 1000).toDateString()}</p>
           </li>
         ))}
       </ul>
