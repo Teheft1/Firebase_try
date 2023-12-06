@@ -14,7 +14,6 @@ const Firestoredata = async () => {
   let data = [];
   querySnapshot.forEach((doc) => {
     data.push({ ...doc.data(), id: doc.id });
-    // console.log(doc.id, "=>", doc.data);
   });
   return (
     <div className="my-10">
